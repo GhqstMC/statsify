@@ -32,6 +32,7 @@ export interface Config {
       | string
       | Array<{
           key: string;
+          localAddress?: string;
           proxy?: {
             protocol: string;
             host: string;
