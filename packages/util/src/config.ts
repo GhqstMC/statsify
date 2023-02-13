@@ -28,7 +28,21 @@ export interface Config {
     /**
      * The Hypixel API Key used for making requests to the Hypixel API
      */
-    key: string;
+    key:
+      | string
+      | Array<{
+          key: string;
+          proxy?: {
+            protocol: string;
+            host: string;
+            port: number;
+            auth?: {
+              username: string;
+              password: string;
+            };
+          };
+        }>;
+
     /**
      * How much time in milliseconds to wait before cancelling a Hypixel API request
      * @example 5000

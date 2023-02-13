@@ -7,28 +7,22 @@
  */
 
 import * as Sentry from "@sentry/node";
-import { APIData } from "@statsify/util";
-import {
-  Friends,
-  GameCounts,
-  Guild,
-  Player,
-  RecentGame,
-  Status,
-  Watchdog,
-} from "@statsify/schemas";
+import { APIData, config } from "@statsify/util";
+import { Friends, GameCounts, Guild, Player, RecentGame, Status, Watchdog } from "@statsify/schemas";
 import { HttpService } from "@nestjs/axios";
 import { HypixelCache } from "@statsify/api-client";
 import { Injectable } from "@nestjs/common";
 import { Logger } from "@statsify/logger";
-import { Observable, catchError, lastValueFrom, map, of, tap, throwError } from "rxjs";
+import { catchError, lastValueFrom, map, Observable, of, tap, throwError } from "rxjs";
 
 @Injectable()
 export class HypixelService {
   private readonly logger = new Logger("HypixelService");
   private resources = new Map<string, APIData>();
+  private index = 0;
 
-  public constructor(private readonly httpService: HttpService) {}
+  public constructor(private readonly httpService: HttpService) {
+  }
 
   public shouldCache(expirey: number, cache: HypixelCache): boolean {
     return (
@@ -161,10 +155,32 @@ export class HypixelService {
 
     const child = transaction?.startChild({
       op: "http.client",
-      description: `GET ${this.httpService.axiosRef.getUri({ url })}`,
+      description: `GET ${this.httpService.axiosRef.getUri({ url })}`
     });
+    const options: Parameters<typeof this.httpService.get>[1] = {
+      headers: {
+        "accept-encoding": "*",
+      },
+      params,
+    };
 
-    return this.httpService.get(url, { params }).pipe(
+    const keys = config("hypixelApi.key");
+
+    if (typeof keys === "string") {
+      (options.headers as any)["API-Key"] = keys;
+    } else {
+      const key = keys[this.index];
+      (options.headers as any)["API-Key"] = key.key;
+      if (typeof options.proxy === "object") {
+        options.proxy = key.proxy;
+      }
+      this.index++;
+      if (this.index === keys.length) {
+        this.index = 0;
+      }
+    }
+
+    return this.httpService.get(url, options).pipe(
       tap((res) => {
         child?.setHttpStatus(res.status);
         child?.finish();
