@@ -53,6 +53,10 @@ export interface Config {
 
   api: {
     /**
+     * What local IP to bind the Statsify API to
+     */
+    address?: string;
+    /**
      * What port to run the Statsify API on
      */
     port: number;

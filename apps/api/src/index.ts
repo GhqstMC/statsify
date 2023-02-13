@@ -95,7 +95,7 @@ async function bootstrap() {
 
   SwaggerModule.setup("swagger", app, document);
 
-  await app.listen(config("api.port"));
+  await app.listen(config("api.port"), config("api.address") ?? "0.0.0.0");
 }
 
 bootstrap();
