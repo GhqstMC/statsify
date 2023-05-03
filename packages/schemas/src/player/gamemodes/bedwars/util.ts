@@ -144,6 +144,146 @@ export const getFormattedLevel = (star: number): string => {
         return `§e[${nums[0]}§6${nums[1]}${nums[2]}§c${nums[3]}§l⚝§r§4]`;
       },
     },
+    {
+      req: 3100,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§9[${nums[0]}§2${nums[1]}${nums[2]}§6${nums[3]}§l✥§r§e]`;
+      },
+    },
+    {
+      req: 3200,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§c[§4${nums[0]}§7${nums[1]}${nums[2]}§4${nums[3]}§c§l✥§r§c]`;
+      },
+    },
+    {
+      req: 3300,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§9[${nums[0]}${nums[1]}§d${nums[2]}§c${nums[3]}§l✥§r§4]`;
+      },
+    },
+    {
+      req: 3400,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§2[§a${nums[0]}§d${nums[1]}${nums[2]}§5${nums[3]}§l✥§r§2]`;
+      },
+    },
+    {
+      req: 3500,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§c[${nums[0]}§4${nums[1]}${nums[2]}§2${nums[3]}§a§l✥§r§a]`;
+      },
+    },
+    {
+      req: 3600,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§a[${nums[0]}${nums[1]}§b${nums[2]}§9${nums[3]}§l✥§r§1]`;
+      },
+    },
+    {
+      req: 3700,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§4[${nums[0]}§c${nums[1]}${nums[2]}§b${nums[3]}§3§l✥§r§3]`;
+      },
+    },
+    {
+      req: 3800,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§1[${nums[0]}§9${nums[1]}§5${nums[2]}${nums[3]}§d§l✥§r§1]`;
+      },
+    },
+    {
+      req: 3900,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§c[${nums[0]}§a${nums[1]}${nums[2]}§3${nums[3]}§9§l✥§r§9]`;
+      },
+    },
+    {
+      req: 4000,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§5[${nums[0]}§c${nums[1]}${nums[2]}§6${nums[3]}§l✥§r§e]`;
+      },
+    },
+    {
+      req: 4100,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§e[${nums[0]}§6${nums[1]}§c${nums[2]}§d${nums[3]}§l✥§r§5]`;
+      },
+    },
+    {
+      req: 4200,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§1[§9${nums[0]}§3${nums[1]}§5${nums[2]}${nums[3]}§d§l✥§r§1]`;
+      },
+    },
+    {
+      req: 4300,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§0[§5${nums[0]}§8${nums[1]}${nums[2]}§5${nums[3]}§l✥§r§0]`;
+      },
+    },
+    {
+      req: 4400,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§2[${nums[0]}§a${nums[1]}§e${nums[2]}§6${nums[3]}§5§l✥§r§d]`;
+      },
+    },
+    {
+      req: 4500,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§f[${nums[0]}§b${nums[1]}${nums[2]}§2${nums[3]}§l✥§r§2]`;
+      },
+    },
+    {
+      req: 4600,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§2[§b${nums[0]}§e${nums[1]}${nums[2]}§6${nums[3]}§d§l✥§r§5]`;
+      },
+    },
+    {
+      req: 4700,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§f[§4${nums[0]}§c${nums[1]}${nums[2]}§9${nums[3]}§1§l✥§r§9]`;
+      },
+    },
+    {
+      req: 4800,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§5[${nums[0]}§c${nums[1]}§6${nums[2]}§e${nums[3]}§b§l✥§r§3]`;
+      },
+    },
+    {
+      req: 4900,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§2[§a${nums[0]}§f${nums[1]}${nums[2]}§a${nums[3]}§l✥§r§2]`;
+      },
+    },
+    {
+      req: 5000,
+      fn: (n) => {
+        const nums = [...n.toString()];
+        return `§4[${nums[0]}§5${nums[1]}§9${nums[2]}${nums[3]}§1§l✥§r§0]`;
+      },
+    },
   ];
 
   return findScore(prestigeColors, star).fn(star);
